@@ -247,9 +247,12 @@ public class InternalResolutionVisitor extends VoidVisitorAdapter<Void> {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     private boolean isWithinKeptMethod(Node node) {
-        if (isKeptClinit(node)) return isWithinClinit(node);
-        if (isKeptInit(node)) return isWithinInit(node);
         if (isKeptMethod(node)) return true;
+
+
+//        if (isKeptClinit(node)) return isWithinClinit(node);
+//        if (isKeptInit(node)) return isWithinInit(node);
+
         if (!looseMatching) return isWithinKeptMethodBasedOnPartialSignature(node);
 
         Optional<CallableDeclaration> declaredMethodOpt = node.findAncestor(CallableDeclaration.class);
